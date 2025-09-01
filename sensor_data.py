@@ -13,7 +13,7 @@ with open(path,"a",newline="") as f:
     w=csv.writer(f)
     if new:
         w.writerow(["timestamp","temperature","humidity","motion"])
-    for _ in range(30):
+    while True:
         t,h=temp.read()
         m=motion.read()
         ts=datetime.datetime.utcnow().isoformat()
