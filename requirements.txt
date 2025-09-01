@@ -1,0 +1,4 @@
+counterfit
+counterfit-shims-seeed-python-dht
+paho-mqtt
+pandas
