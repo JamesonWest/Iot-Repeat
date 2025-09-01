@@ -22,15 +22,12 @@ with open(log_path,"a",newline="") as f:
     w=csv.writer(f)
     if new:
         w.writerow(["timestamp","temperature","humidity"])
-    try:
-        while True:
-            humidity, temperature = dht.read()
-            ts = datetime.datetime.utcnow().isoformat()
-            payload = {"timestamp": ts, "temperature": temperature, "humidity": humidity}
-            client.publish(config.MQTT_TOPIC, json.dumps(payload), qos=0)
-            w.writerow([ts, temperature, humidity])
-            f.flush()
-            print("sent", payload)
-            time.sleep(config.SAMPLE_INTERVAL)
-    except KeyboardInterrupt:
-        print("\nStopped.")
+    while True:
+        humidity, temperature=dht.read()
+        ts=datetime.datetime.utcnow().isoformat()
+        payload={"timestamp":ts,"temperature":temperature,"humidity":humidity}
+        client.publish(config.MQTT_TOPIC, json.dumps(payload), qos=0)
+        w.writerow([ts,temperature,humidity])
+        f.flush()
+        print("sent",payload)
+        time.sleep(config.SAMPLE_INTERVAL)
