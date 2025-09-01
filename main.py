@@ -1,0 +1,7 @@
+from counterfit_shims_grove.grove_temperature_humidity_sensor import GroveTemperatureHumiditySensor
+from counterfit_shims_grove.grove_motion_sensor import GroveMotionSensor
+
+temp_sensor=GroveTemperatureHumiditySensor(0)
+motion_sensor=GroveMotionSensor(5)
+
+print("setup ok")
